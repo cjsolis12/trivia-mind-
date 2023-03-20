@@ -1,0 +1,66 @@
+body {
+    background-image: url("../images/landscape.png"); 
+    background-repeat: no-repeat;
+    background-color: rgb(21 3 20);
+}
+p {
+    padding-top: 20px;
+}
+.title {
+        font-family: 'tr2n';
+        src: url('font/tr2n-webfont.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+        color: #c9de60;
+        font-size: 100px;
+
+}
+.brainSection {
+    padding-bottom: 0%;
+    margin-top: 20px;
+}
+.brainImg {
+    -webkit-animation: mover 2s infinite  alternate;
+    animation: mover 1s infinite  alternate;
+    height: 170px;
+    width: 200px;
+    z-index:-1;
+}
+@-webkit-keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+}
+@keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+}
+.handSection {
+padding-top: 0%;
+}
+.handImg {
+    width: 40%;
+}
+.glow {
+    -webkit-animation: glow 3s ease-in-out infinite alternate;
+    -moz-animation: glow 2s ease-in-out infinite alternate;
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+  
+  @-webkit-keyframes glow {
+    from {
+      text-shadow: 
+      0 0 20px #fff, 
+      0 0 30px #e60073, 
+      0 0 40px #e60073, 
+      0 0 50px #e60073;
+    }
+    to {
+      text-shadow: 
+      0 0 30px #ed62a8b8,
+      0 0 40px #ff4da6, 
+      0 0 50px #ff4da6, 
+      0 0 60px #d3478dc2,
+      0 0 70px #d3478da4,
+      0 0 80px #d3478d9e,
+    }
+  }
