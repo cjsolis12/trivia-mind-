@@ -76,3 +76,7 @@ padding-top: 0%;
     border: solid white;
     color: #c9de60;
 }
+
+.is-hidden {
+  display: none;
+}
