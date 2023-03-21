@@ -64,3 +64,15 @@ padding-top: 0%;
       0 0 80px #d3478d9e,
     }
   }
+.questions {
+    width:200 px;
+    height:200 px;
+    border: solid white;
+    color: #c9de60;
+}
+.answers {
+    width:200 px;
+    height:200 px;
+    border: solid white;
+    color: #c9de60;
+}
