@@ -7,13 +7,11 @@ p {
     padding-top: 20px;
 }
 .title {
-        font-family: 'tr2n';
-        src: url('font/tr2n-webfont.woff') format('woff');
+        font-family: 'tr2ntr2n';
         font-weight: normal;
         font-style: normal;
         color: #c9de60;
         font-size: 100px;
-
 }
 .brainSection {
     padding-bottom: 0%;
@@ -64,6 +62,15 @@ padding-top: 0%;
       0 0 80px #d3478d9e,
     }
   }
+
+@font-face {
+  font-family: 'tr2ntr2n';
+  src: url('../css/font/tr2n-webfont.woff') format('woff2'),
+  url('../css/font/tr2n-webfont.woff2') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
 .questions {
     margin-block: 50px;
     width:150 px;
