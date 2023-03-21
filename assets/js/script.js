@@ -1,4 +1,5 @@
 var categoryButtons= document.querySelectorAll(".button")
+var questionBox=document.querySelectorAll(".question")
 
 // API call to trivia categories
 var getQuestionCategory = function(categoryChoice) {
@@ -20,4 +21,14 @@ function categoryButtonClicked(){
 // Clicking on each category button
 for(const categoryButton of categoryButtons){
     categoryButton.addEventListener('click', categoryButtonClicked)
+}
+
+
+// Looping over each question and answer choices from api 
+var createQuestionAndAnswers = function(questionIndex){
+    let questionContainer = document.createElement('h2')
+    let currentQuestion = data[questionIndex];
+    let questionText = currentQuestion.question
+    questionContainer.textContent = questionText
+
 }
