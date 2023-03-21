@@ -72,30 +72,36 @@ padding-top: 0%;
 
 }
 .questions {
-    margin-block: 50px;
-    width:150 px;
-    height:150 px;
+    width:650px;
+    height:600px;
     border: solid #ff4da6;
-    background-color: #ed62a8b8,;
+    background-color: #5d113772;
     color: #c9de60;
     padding: 20px;
     font-size: 18pt;
     font-family: "Lucida Console", "Courier New", monospace;
-    font-weight: 100%
+    font-weight: bolder;
 }
 .answers {
-    margin-block: 50px;
-    width:200 px;
-    height:200 px;
+    width:500px;
+    height:400px;
     border: solid #ff4da6;
-    background-color: #ed62a8b8,;
+    background-color: rgba(61, 12, 37, 0.235);
     color: #c9de60;
     padding: 50px;
     font-size: 14pt;
     font-family: "Lucida Console", "Courier New", monospace;
-    font-weight: 80%
+    font-weight: bolder;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 50px;
 }
 
 .is-hidden {
   display: none;
+}
+.answers > div {
+    border: #c9de60 solid;
+    padding: 5px;
+    margin: 15px;
 }

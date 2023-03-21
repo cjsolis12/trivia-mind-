@@ -12,10 +12,11 @@
     <section class="section">
         <div class="container">
           <h1 class="title glow">Trivia M!nd</h1>
-          <p class="subtitle">Choose your category to begin</p>
+          
         </div>
-      </section>
-      <section>      
+    </section>
+    <section class="is-hidden"> 
+      <p class="subtitle">Choose your category to begin</p>     
       <button value= "music" class="button is-warning is-outlined">Music</button>
       <button value= "geography" class="button is-danger is-outlined">Geography</button>
       <button value= "food_and_drink" class="button is-primary is-outlined">Food and Drink</button>
@@ -24,11 +25,13 @@
       <button value= "science" class="button is-info is-outlined">Science</button>
     </section>
     <div class= "container questions">'Question'
-      <div class= "answers">'Answer'
+      <div class= "answers">
+        <div class="button is-warning is-outlined is-rounded" data-value="1">answer choice 1</div>
+        <div class="button is-danger is-outlined is-rounded" data-value="2">answer choice 2</div>
+        <div class="button is-primary is-outlined is-rounded" data-value="3">answer choice 3</div>
+        <div class="button is-link is-outlined is-rounded" data-value="4">answer choice 4</div>
       </div>
-        
-      </div>
-
+    </div>
 
     
     <script src="assets/js/script.js"></script>
