@@ -44,6 +44,12 @@ var createAnswers = function(responseData){
     let shuffledArray = answersArr.sort((a,b) => 0.5 - Math.random())
     
     // Append array indexes to buttons
+    for(let i = 0; i < answersArr.length; i++){
+        let answerBtns = document.createElement('button')
+        answerBtns.innerHTML = answersArr[i]
+        answerBox.append(answerBtns)
+    }
+    
 }
 
 // Start button event listener 
