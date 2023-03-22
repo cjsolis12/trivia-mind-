@@ -5,12 +5,15 @@ let questionIndex = 0
 
 // API call to trivia categories
 var getQuestionCategory = function(categoryChoice) {
-    fetch(`https://the-trivia-api.com/api/questions?categories=${categoryChoice}&limit=5`)
-    .then((res)=>{
-        return res.json();
+    fetch(`https://the-trivia-api.com/api/questions?categories=${categoryChoice}&limit=1`)
+        .then((res)=>{
+            return res.json();
     })
-    .then((responseData)=>{
-        console.log(responseData)
+        .then((responseData)=>{
+            let currentQuestion = responseData[0].question
+            questionBox.innerHTML= currentQuestion
+            console.log(responseData)
+           
     })
     .catch(error => console.log(error));
 }
@@ -20,7 +23,6 @@ function categoryButtonClicked(){
    var categoryChoice = this.value
    console.log(categoryChoice)
    getQuestionCategory(categoryChoice)
-    createQuestionAndAnswers()
 }
 
 // Clicking on each category button
