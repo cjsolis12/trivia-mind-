@@ -1,5 +1,6 @@
 var categoryButtons = document.querySelectorAll(".button")
 var questionBox = document.querySelector(".questions")
+var answerBox = document.querySelector(".answers")
 let questionIndex = 0
 
 
@@ -12,8 +13,8 @@ var getQuestionCategory = function(categoryChoice) {
         .then((responseData)=>{
             let currentQuestion = responseData[0].question
             questionBox.innerHTML= currentQuestion
-            console.log(responseData)
-           
+            console.log(responseData) 
+            createAnswers(responseData)       
     })
     .catch(error => console.log(error));
 }
@@ -31,14 +32,18 @@ for(const categoryButton of categoryButtons){
 }
 
 
-// Looping over each question and answer choices from api 
+// Creating answer choices array from api answers and displaying
+var createAnswers = function(responseData){
+    let answersArr= [];
 
-var createQuestionAndAnswers = function(responseData){
-    if(responseData){
-        let currentQuestion = responseData[questionIndex].question
-        console.log(currentQuestion)
-        questionBox.innerHTML= currentQuestion
-    }  
+    answersArr.push(responseData[0].correctAnswer)
+    for (let i =0; i < 3; i++){
+        answersArr.push(responseData[0].incorrectAnswers[i])
+    }
+
+    let shuffledArray = answersArr.sort((a,b) => 0.5 - Math.random())
+    
+    // Append array indexes to buttons
 }
 
 // Start button event listener 
