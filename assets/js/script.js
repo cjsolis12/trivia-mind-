@@ -34,6 +34,7 @@ for(const categoryButton of categoryButtons){
 
 // Creating answer choices array from api answers and displaying
 var createAnswers = function(responseData){
+    $('#answers').empty()
     let answersArr= [];
 
     answersArr.push(responseData[0].correctAnswer)
