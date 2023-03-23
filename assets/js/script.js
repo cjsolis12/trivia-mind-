@@ -48,6 +48,8 @@ var createAnswers = function(responseData){
     for(let i = 0; i < answersArr.length; i++){
         let answerBtns = document.createElement('button')
         answerBtns.innerHTML = answersArr[i]
+    // Apply bulma styling to the button element before appending
+        answerBtns.classList.add('button', 'is-primary', 'is-outlined', 'is-mobile');
         answerBox.append(answerBtns)
     }
     
