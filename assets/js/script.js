@@ -1,5 +1,7 @@
 var categoryButtons = document.querySelectorAll(".button")
 var catBtns = document.querySelector(".catBtns")
+var questionAnswerEl = document.querySelector(".questions-and-answers");
+var brainHandEl = document.querySelector("figure")
 var questionBox = document.querySelector(".questions")
 var answerBox = document.querySelector(".answers")
 let questionIndex = 0
@@ -26,6 +28,8 @@ function categoryButtonClicked(){
    console.log(categoryChoice)
    getQuestionCategory(categoryChoice)
    catBtns.style.display = 'none';
+    brainHandEl.style.display= 'none';
+   questionAnswerEl.style.display = 'block';
 }
 
 // Clicking on each category button

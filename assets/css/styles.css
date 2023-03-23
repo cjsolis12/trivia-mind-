@@ -50,8 +50,8 @@ padding-top: 0%;
     -moz-animation: glow 2s ease-in-out infinite alternate;
     animation: glow 2s ease-in-out infinite alternate;
   }
-  
-  @-webkit-keyframes glow {
+
+@-webkit-keyframes glow {
     from {
       text-shadow: 
       0 0 20px #fff, 
@@ -93,6 +93,6 @@ padding-top: 0%;
     font-family: "Lucida Console", "Courier New", monospace;
     font-weight: 80%
 }
-.is-hidden {
+.questions-and-answers{
     display: none;
-  }
+}
