@@ -4,7 +4,7 @@ body {
     background-color: rgb(21 3 20);
 }
 p {
-    padding-top: 20px;
+    padding: 20px;
 }
 .title {
     font-family: 'tr2ntr2n';
@@ -93,3 +93,6 @@ padding-top: 0%;
     font-family: "Lucida Console", "Courier New", monospace;
     font-weight: 80%
 }
+.is-hidden {
+    display: none;
+  }

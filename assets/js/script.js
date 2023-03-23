@@ -1,4 +1,5 @@
 var categoryButtons = document.querySelectorAll(".button")
+var catBtns = document.querySelector(".catBtns")
 var questionBox = document.querySelector(".questions")
 var answerBox = document.querySelector(".answers")
 let questionIndex = 0
@@ -24,6 +25,7 @@ function categoryButtonClicked(){
    var categoryChoice = this.value
    console.log(categoryChoice)
    getQuestionCategory(categoryChoice)
+   catBtns.style.display = 'none';
 }
 
 // Clicking on each category button
