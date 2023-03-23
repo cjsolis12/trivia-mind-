@@ -86,13 +86,15 @@ var createAnswers = function(responseData){
         answerBox.append(answerBtns)
         answerBtns.addEventListener('click', function(event){
             answerClicked(event)
+            getQuestionCategory() //this fires next question but the questions are from other categories 
         });
     }
 
-    function answerClicked() {
+    function answerClicked(event) {
         console.log("answer clicked")
         const selectedAnswer = event.target.innerHTML
         if(selectedAnswer === responseData[0].correctAnswer){
+            // function for tracking points
             console.log("correct!")
         } else{
             console.log("incorrect")
