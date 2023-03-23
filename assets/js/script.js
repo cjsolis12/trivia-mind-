@@ -79,21 +79,30 @@ var createAnswers = function(responseData){
     // Append array indexes to buttons
     for(let i = 0; i < answersArr.length; i++){
         let answerBtns = document.createElement('button')
-        answerBtns.innerHTML = answersArr[i]
+        answerBtns.innerHTML = shuffledArray[i]
         
         // Applied bulma styling to the button element before appending
         answerBtns.classList.add('button', 'is-primary', 'is-outlined', 'is-mobile');
         answerBox.append(answerBtns)
-        answerBtns.addEventListener('click', answerClicked);
+        answerBtns.addEventListener('click', function(event){
+            answerClicked(event)
+        });
     }
+
+    function answerClicked() {
+        console.log("answer clicked")
+        const selectedAnswer = event.target.innerHTML
+        if(selectedAnswer === responseData[0].correctAnswer){
+            console.log("correct!")
+        } else{
+            console.log("incorrect")
+        }
+        // need to stop the timer or else it will keep
+        // going and think an answer wasnt selected
+        clearInterval(timeInterval);
+    };
 }
 
-function answerClicked() {
-    console.log("answer clicked")
 
-    // need to stop the timer or else it will keep
-    // going and think an answer wasnt selected
-    clearInterval(timeInterval);
-};
 // Start button event listener 
 
