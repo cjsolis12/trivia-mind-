@@ -54,7 +54,6 @@ var createAnswers = function(responseData){
         answerBtns.classList.add('button', 'is-primary', 'is-outlined', 'is-mobile');
         answerBox.append(answerBtns)
     }
-    
 }
 
 // Start button event listener 
