@@ -1,9 +1,10 @@
 var categoryButtons = document.querySelectorAll(".button")
-var catBtns = document.querySelector(".catBtns")
+var main = document.querySelector(".main")
 var questionAnswerEl = document.querySelector(".questions-and-answers");
 var brainHandEl = document.querySelector("figure")
 var questionBox = document.querySelector(".questions")
 var answerBox = document.querySelector(".answers")
+var progressBar = document.querySelector('.progress');
 let questionIndex = 0
 
 
@@ -24,11 +25,13 @@ var getQuestionCategory = function(categoryChoice) {
 
 // getting the value of the button clicked
 function categoryButtonClicked(){
+   startTimer()
    var categoryChoice = this.value
    console.log(categoryChoice)
    getQuestionCategory(categoryChoice)
-   catBtns.style.display = 'none';
-    brainHandEl.style.display= 'none';
+
+   main.style.display = 'none';
+   brainHandEl.style.display= 'none';
    questionAnswerEl.style.display = 'block';
 }
 
@@ -37,6 +40,29 @@ for(const categoryButton of categoryButtons){
     categoryButton.addEventListener('click', categoryButtonClicked)
 }
 
+let timeInterval;
+
+// Progress bar decreases from 100% to 0% in 7 seconds
+function startTimer(){
+    console.log("Time started")
+
+    progressBar.style.width = '100%';
+
+    // Starts the transitions
+    setTimeout(() => {
+        progressBar.style.width = '0%';
+    }, 0);
+
+    // Starts a timer
+    timeInterval = setInterval(function () {
+        console.log('Time ended.');
+        clearInterval(timeInterval);
+
+        // Add code here once complete
+        // What should happen when the timer runs out?
+        
+    }, 6000);
+}
 
 // Creating answer choices array from api answers and displaying
 var createAnswers = function(responseData){
@@ -54,11 +80,20 @@ var createAnswers = function(responseData){
     for(let i = 0; i < answersArr.length; i++){
         let answerBtns = document.createElement('button')
         answerBtns.innerHTML = answersArr[i]
-    // Apply bulma styling to the button element before appending
+        
+        // Applied bulma styling to the button element before appending
         answerBtns.classList.add('button', 'is-primary', 'is-outlined', 'is-mobile');
         answerBox.append(answerBtns)
+        answerBtns.addEventListener('click', answerClicked);
     }
 }
 
+function answerClicked() {
+    console.log("answer clicked")
+
+    // need to stop the timer or else it will keep
+    // going and think an answer wasnt selected
+    clearInterval(timeInterval);
+};
 // Start button event listener 
 
