@@ -81,10 +81,14 @@ var createAnswers = function(questionData){
     // Append array indexes to buttons
     for(let i = 0; i < answersArr.length; i++){
         let answerBtns = document.createElement('button')
-        answerBtns.innerHTML = shuffledArray[i]
-        
-        // Applied bulma styling to the button element before appending
-        answerBtns.classList.add('button', 'is-primary', 'is-outlined', 'is-mobile');
+        answerBtns.innerHTML = answersArr[i]
+        var classArr= [
+            "is-primary",
+            "is-danger",
+            "is-warning",
+            "is-link",
+        ]
+        answerBtns.classList.add ("button", classArr [i%classArr.length], "is-outlined","is-mobile","btngap")
         answerBox.append(answerBtns)
         answerBtns.addEventListener('click', function(event){
             answerClicked(event)
