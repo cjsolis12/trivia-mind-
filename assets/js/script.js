@@ -22,7 +22,10 @@ var getQuestionCategory = function(categoryChoice, questionIndex) {
             questionBox.innerHTML= currentQuestion
             createAnswers(responseData[questionIndex])          
     })
-    .catch(error => console.log(error));
+    .catch(error => {console.log(error)
+        questionAnswerEl.style.display = 'none';
+        return;});
+     
 }
 
 // getting the value of the button clicked
