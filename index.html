@@ -9,28 +9,40 @@
     <link rel="stylesheet" href="assets/css/styles.css"/>
 </head>
 <body  class="container">
-    <section class="section">
-        <div class="container">
+    <section class="titleSection">
+        <div class="container ">
           <h1 class="title glow" >Trivia M!nd</h1>
-          <p class="subtitle">Choose your category to begin</p>
         </div>
       </section>
-      <section>      
+      <section class="main">
+        <header class="subtitle">How to Play:</header>
+      <p>Welcome to Trivia Mind, a fast-paced quiz game to test your knowledge, and prove that humans can still triumph over AI. Choose your category below to start the timer and begin answering questions as quickly and as accurately as possible. Once time runs out, stake your claim and save your high score for all to see. Or, hide the failure and try again. Good luck!
+      </p>
+      <p class="subtitle">Choose your category to begin</p>  
       <button value= "music" class="button is-warning is-outlined">Music</button>
       <button value= "geography" class="button is-danger is-outlined">Geography</button>
       <button value= "food_and_drink" class="button is-primary is-outlined">Food and Drink</button>
       <button value= "film_and_tv" class="button is-link is-outlined">Film & TV</button>
       <button value= "sport_and_leisure" class="button is-success is-outlined">Sports</button>
       <button value= "science" class="button is-info is-outlined">Science</button>
-
-
     </section>
+    
+    <figure>
+    <section class="brainSection">
+      <img src="assets/images/brain2.png" alt="brain-image" class="brainImg">
+    </section> 
+    <section class="handSection"><img src="assets/images/hand2.png" alt="hand-image" class="handImg"></section>
+    </figure>
+
     <div class= "questions-and-answers">
-      <div class="questions">
-        'Question'
+      <div class="questions"></div>
+      <div id="answers" class="answers"></div>  
+      <div class="progress-bar">
+        <div class="progress"></div>
       </div>
-      <div class= "answers">'Answer'</div>  
-      </div>
+      
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
     <script src="assets/js/script.js"></script>
 </body>
 </html>
