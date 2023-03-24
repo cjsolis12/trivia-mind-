@@ -48,6 +48,13 @@ var createAnswers = function(responseData){
     for(let i = 0; i < answersArr.length; i++){
         let answerBtns = document.createElement('button')
         answerBtns.innerHTML = answersArr[i]
+        var classArr= [
+            "is-primary",
+            "is-danger",
+            "is-warning",
+            "is-link",
+        ]
+        answerBtns.classList.add ("button", classArr [i%classArr.length], "is-outlined","is-mobile","btngap")
         answerBox.append(answerBtns)
     }
     
