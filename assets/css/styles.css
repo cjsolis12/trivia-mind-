@@ -8,9 +8,7 @@ p {
     padding-bottom: 20px;
     color: #ff4da6;
     font-family: "Lucida Console", "Courier New", monospace;
-}
-header {
-    
+    font-weight: bolder;
 }
 .title {
     font-family: 'tr2ntr2n';
@@ -84,7 +82,7 @@ padding-top: 0%;
     padding: 20px;
     font-size: 18pt;
     font-family: "Lucida Console", "Courier New", monospace;
-    font-weight: 100%
+    font-weight: bold;
 }
 .answers {
     margin-block: 50px;
@@ -128,8 +126,18 @@ padding-top: 0%;
     -o-transition: none !important;
     transition: none !important;
   }
-  
-
+  .saveScore {
+    display: none;
+    width: 30%;
+    margin-right: auto;
+    margin-left: auto;
+}
+.try-again {
+    font-family: 'tr2ntr2n';
+}
+.submit {
+    margin-top: 20px;
+}
 
   
 

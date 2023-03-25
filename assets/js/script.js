@@ -5,8 +5,11 @@ var brainHandEl = document.querySelector("figure");
 var questionBox = document.querySelector(".questions");
 var answerBox = document.querySelector(".answers");
 var progressBar = document.querySelector(".progress");
+var submitBtn = document.querySelector(".submit");
+var tryAgainBtn = document.querySelector(".try-again");
 let questionIndex = 0;
 var score = 0;
+var nameInput = document.querySelector(".input").value;
 var categoryChoice;
 var questions = [];
 
@@ -34,6 +37,7 @@ var getQuestionCategory = function (categoryChoice, questionIndex) {
     answerBox.style.display = "none";
     questionBox.innerHTML = `Quiz has ended! Your Score is ${score}`
     document.querySelector('.progress-bar').style.display = 'none';
+    document.querySelector('.saveScore').style.display = 'block';
     return;
   }else{
     displayQuestionAndAnswers(questionIndex);
@@ -59,10 +63,25 @@ function categoryButtonClicked() {
 
   getQuestionCategory(categoryChoice, questionIndex);
 }
-
 // Clicking on each category button
 for (const categoryButton of categoryButtons) {
   categoryButton.addEventListener("click", categoryButtonClicked);
+}
+
+tryAgainBtn.addEventListener("click", tryAgain);
+function tryAgain () {
+    location.reload();
+}
+
+submitBtn.addEventListener("click", submitInfo);
+function submitInfo() {
+    localStorage.setItem("nameInput", nameInput);
+    localStorage.getItem("score", score)
+    // Retrieve the saved user input from local storage
+
+const savedUserInput = localStorage.getItem('nameInput');
+// Use the saved user input in your code as needed
+console.log(savedUserInput);
 }
 
 let timeInterval;
