@@ -36,6 +36,8 @@ var getQuestionCategory = function (categoryChoice, questionIndex) {
   }else{
     displayQuestionAndAnswers(questionIndex);
   }
+  clearInterval(timeInterval);
+  startTimer()
 };
 
 var displayQuestionAndAnswers = function (questionIndex) {
@@ -64,26 +66,39 @@ for (const categoryButton of categoryButtons) {
 
 let timeInterval;
 
-// Progress bar decreases from 100% to 0% in 7 seconds
 function startTimer() {
-  console.log("Time started");
+    console.log("Time started");
+    startProgressBar();
+    // 6 second timer
+    timeInterval = setInterval(function () {
+      console.log("Time ended.");
+    
+      // Add code that makes something happen when the timer runs out
+      clearInterval(timeInterval); // Clear the timer after 6s
+      questionIndex++;
+      getQuestionCategory(categoryChoice, questionIndex);
+    }, 6000);
+  }
 
-  progressBar.style.width = "100%";
+  function startProgressBar() {
+    console.log("bar should be refilled")
+    progressBar.style.transition = "";
+   // progressBar.style.width = '100%'; // reset progress bar width
 
-  // Starts the transitions
-  setTimeout(() => {
-    progressBar.style.width = "0%";
-  }, 0);
+   progressBar.style.transition = "width 0s linear";
 
-  // Starts a timer
-  timeInterval = setInterval(function () {
-    console.log("Time ended.");
-    clearInterval(timeInterval);
+    setTimeout(() => {
+        progressBar.style.width = "100%";
+      }, 0);
 
-    // Add code here once complete
-    // What should happen when the timer runs out?
-  }, 6000);
-}
+      progressBar.style.transition = "width 6s linear";
+
+    setTimeout(() => {
+        progressBar.style.width = "0%";
+      }, 0);
+
+  }
+  
 
 // Creating answer choices array from api answers and displaying
 var createAnswers = function (questionData) {
@@ -94,7 +109,6 @@ var createAnswers = function (questionData) {
   for (let i = 0; i < 3; i++) {
     answersArr.push(questionData.incorrectAnswers[i]);
   }
-
   let shuffledArray = answersArr.sort((a, b) => 0.5 - Math.random());
 
   // Append array indexes to buttons
@@ -117,6 +131,9 @@ var createAnswers = function (questionData) {
 
   function answerClicked(event) {
     console.log("answer clicked");
+    clearInterval(timeInterval);
+    startTimer();
+
     const selectedAnswer = event.target.innerHTML;
     if (selectedAnswer === questionData.correctAnswer) {
       // function for tracking points
@@ -125,12 +142,10 @@ var createAnswers = function (questionData) {
     } else {
       console.log("incorrect");
     }
-    // need to stop the timer or else it will keep
-    // going and think an answer wasnt selected
-    clearInterval(timeInterval);
+  
     questionIndex++;
     getQuestionCategory(categoryChoice, questionIndex);
-
+    
     localStorage.setItem("score", score)
   }
 };
