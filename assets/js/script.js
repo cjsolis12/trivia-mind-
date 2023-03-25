@@ -20,7 +20,7 @@ var getQuestionCategory = function (categoryChoice, questionIndex) {
         return res.json();
       })
       .then((responseData) => {
-        console.log(responseData);
+        // console.log(responseData);
         questions = responseData;
         displayQuestionAndAnswers(questionIndex);
       })
@@ -36,8 +36,7 @@ var getQuestionCategory = function (categoryChoice, questionIndex) {
   }else{
     displayQuestionAndAnswers(questionIndex);
   }
-  clearInterval(timeInterval);
-  startTimer()
+  startTimer();
 };
 
 var displayQuestionAndAnswers = function (questionIndex) {
@@ -49,14 +48,14 @@ var displayQuestionAndAnswers = function (questionIndex) {
 
 // getting the value of the button clicked
 function categoryButtonClicked() {
-  startTimer();
   categoryChoice = this.value;
   console.log(categoryChoice);
-  getQuestionCategory(categoryChoice, questionIndex);
 
   main.style.display = "none";
   brainHandEl.style.display = "none";
   questionAnswerEl.style.display = "block";
+
+  getQuestionCategory(categoryChoice, questionIndex);
 }
 
 // Clicking on each category button
@@ -69,37 +68,24 @@ let timeInterval;
 function startTimer() {
     console.log("Time started");
     startProgressBar();
-    // 6 second timer
+    // 5 second timer
     timeInterval = setInterval(function () {
       console.log("Time ended.");
-    
-      // Add code that makes something happen when the timer runs out
-      clearInterval(timeInterval); // Clear the timer after 6s
+     // When timer runs out 
+      clearInterval(timeInterval); // Clear the timer after 5s
       questionIndex++;
       getQuestionCategory(categoryChoice, questionIndex);
-    }, 6000);
+    }, 5000);
   }
 
   function startProgressBar() {
-    console.log("bar should be refilled")
-    progressBar.style.transition = "";
-   // progressBar.style.width = '100%'; // reset progress bar width
-
-   progressBar.style.transition = "width 0s linear";
-
-    setTimeout(() => {
-        progressBar.style.width = "100%";
-      }, 0);
-
-      progressBar.style.transition = "width 6s linear";
-
-    setTimeout(() => {
-        progressBar.style.width = "0%";
-      }, 0);
-
+    progressBar.classList.add('notransition'); // Disable transitions
+    progressBar.style.width = "100%";
+    progressBar.offsetHeight; // Trigger a reflow, flushing the CSS changes
+    progressBar.classList.remove('notransition'); // Re-enable transitions
+    progressBar.style.width = "0%";
   }
   
-
 // Creating answer choices array from api answers and displaying
 var createAnswers = function (questionData) {
   $("#answers").empty();
@@ -132,7 +118,6 @@ var createAnswers = function (questionData) {
   function answerClicked(event) {
     console.log("answer clicked");
     clearInterval(timeInterval);
-    startTimer();
 
     const selectedAnswer = event.target.innerHTML;
     if (selectedAnswer === questionData.correctAnswer) {
