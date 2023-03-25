@@ -33,6 +33,8 @@ var getQuestionCategory = function (categoryChoice, questionIndex) {
     console.log('quiz has ended')
     answerBox.style.display = "none";
     questionBox.innerHTML = `Quiz has ended! Your Score is ${score}`
+    document.querySelector('.progress-bar').style.display = 'none';
+    return;
   }else{
     displayQuestionAndAnswers(questionIndex);
   }
