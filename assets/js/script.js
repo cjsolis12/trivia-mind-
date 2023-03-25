@@ -29,7 +29,11 @@ var getQuestionCategory = function (categoryChoice, questionIndex) {
         questionAnswerEl.style.display = "none";
         return;
       });
-  } else {
+  } else if(questionIndex >= questions.length){
+    console.log('quiz has ended')
+    answerBox.style.display = "none";
+    questionBox.innerHTML = `Quiz has ended! Your Score is ${score}`
+  }else{
     displayQuestionAndAnswers(questionIndex);
   }
 };
@@ -126,5 +130,7 @@ var createAnswers = function (questionData) {
     clearInterval(timeInterval);
     questionIndex++;
     getQuestionCategory(categoryChoice, questionIndex);
+
+    localStorage.setItem("score", score)
   }
 };
