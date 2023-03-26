@@ -28,8 +28,9 @@ var getQuestionCategory = function (categoryChoice, questionIndex) {
 
 // API call to pexel pictures
 var getPicture = function (categoryChoice) {
-    console.log(categoryChoice)
-  fetch(`https://api.pexels.com/v1/search?query=${categoryChoice}&per_page=1`, {
+    searchQuery = categoryChoice.split("_")[0]
+    console.log(searchQuery)
+  fetch(`https://api.pexels.com/v1/search?query=${searchQuery}&per_page=1`, {
     headers: {
       Authorization: "69GSdMwytrFk7RQ3smY6ZSnjrwiZlKA5b0urYfP9iThhwOPTWywY9Jkf",
     },
