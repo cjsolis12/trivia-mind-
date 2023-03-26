@@ -12,18 +12,16 @@ let questionIndex = 0;
 var score = 0;
 var categoryChoice;
 var questions = [];
+var pictureCategory;
 
 // API call to trivia categories
 var getQuestionCategory = function (categoryChoice, questionIndex) {
   if (questions.length === 0) {
-    fetch(
-      `https://the-trivia-api.com/api/questions?categories=${categoryChoice}`
-    )
+    fetch(`https://the-trivia-api.com/api/questions?categories=${categoryChoice}`)
       .then((res) => {
         return res.json();
       })
       .then((responseData) => {
-        // console.log(responseData);
         questions = responseData;
         displayQuestionAndAnswers(questionIndex);
       })
@@ -32,7 +30,7 @@ var getQuestionCategory = function (categoryChoice, questionIndex) {
         questionAnswerEl.style.display = "none";
         return;
       });
-  } else if(questionIndex >= questions.length){
+  } else if (questionIndex >= questions.length){
     console.log('quiz has ended')
     answerBox.style.display = "none";
     questionBox.innerHTML = `Quiz has ended! Your Score is ${score}`
