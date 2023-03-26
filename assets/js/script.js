@@ -30,7 +30,7 @@ var getQuestionCategory = function (categoryChoice, questionIndex) {
 var getPicture = function (categoryChoice) {
     searchQuery = categoryChoice.split("_")[0]
     console.log(searchQuery)
-  fetch(`https://api.pexels.com/v1/search?query=${searchQuery}&per_page=1`, {
+  fetch(`https://api.pexels.com/v1/search?query=${searchQuery}&per_page=1&page=${Math.floor(Math.random() * 10) + 1}`, {
     headers: {
       Authorization: "69GSdMwytrFk7RQ3smY6ZSnjrwiZlKA5b0urYfP9iThhwOPTWywY9Jkf",
     },
