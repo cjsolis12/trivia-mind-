@@ -105,7 +105,7 @@ var createAnswers = function (questionData) {
   // Append array indexes to buttons
   for (let i = 0; i < answersArr.length; i++) {
     let answerBtns = document.createElement("button");
-    answerBtns.innerHTML = answersArr[i];
+    answerBtns.innerHTML = shuffledArray[i];
     var classArr = ["is-primary", "is-danger", "is-warning", "is-link"];
     answerBtns.classList.add(
       "button",
