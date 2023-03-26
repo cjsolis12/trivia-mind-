@@ -151,3 +151,7 @@ td {
 .photoSection {
     display: none;
 }
+
+.photoSection > img {
+   height: 250px;
+}
