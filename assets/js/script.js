@@ -8,6 +8,7 @@ var progressBar = document.querySelector(".progress");
 var submitBtn = document.querySelector(".submit");
 var tryAgainBtn = document.querySelector(".try-again");
 var tableDiv = document.querySelector(".tableDiv");
+var photoSection = document.querySelector('.photoSection');
 let questionIndex = 0;
 var score = 0;
 var categoryChoice;
@@ -16,15 +17,14 @@ var questions = [];
 // API call to trivia categories
 var getQuestionCategory = function (categoryChoice, questionIndex) {
   if (questions.length === 0) {
-    fetch(
-      `https://the-trivia-api.com/api/questions?categories=${categoryChoice}`
-    )
+    fetch(`https://the-trivia-api.com/api/questions?categories=${categoryChoice}`)
       .then((res) => {
         return res.json();
       })
       .then((responseData) => {
-        // console.log(responseData);
         questions = responseData;
+        // getPhoto(categoryChoice, questionIndex);
+        getPicture(categoryChoice);
         displayQuestionAndAnswers(questionIndex);
       })
       .catch((error) => {
@@ -32,18 +32,46 @@ var getQuestionCategory = function (categoryChoice, questionIndex) {
         questionAnswerEl.style.display = "none";
         return;
       });
-  } else if(questionIndex >= questions.length){
+  } else if (questionIndex >= questions.length){
     console.log('quiz has ended')
     answerBox.style.display = "none";
+
     questionBox.innerHTML = `Quiz has ended! Your Score is ${score}`
     document.querySelector('.progress-bar').style.display = 'none';
+
     document.querySelector('.saveScore').style.display = 'inline-grid';
+    var imgElement= document.getElementById('photo')
+    imgElement.style.display = "none"
     return;
   } else {
     displayQuestionAndAnswers(questionIndex);
   }
   startTimer();
 };
+
+// API call to pexel pictures
+var getPicture = function (categoryChoice) {
+    searchQuery = categoryChoice.split("_")[0]
+    console.log(searchQuery)
+  fetch(`https://api.pexels.com/v1/search?query=${searchQuery}&per_page=1&page=${Math.floor(Math.random() * 10) + 1}`, {
+    headers: {
+      Authorization: "69GSdMwytrFk7RQ3smY6ZSnjrwiZlKA5b0urYfP9iThhwOPTWywY9Jkf",
+    },
+  })
+    .then((res) => {
+      return res.json();
+    })
+    .then((responseData) => {
+      console.log(responseData);
+      var imageUrl = responseData.photos[0].src.medium
+      console.log(imageUrl)
+      var imgElement= document.getElementById('photo')
+      imgElement.src = imageUrl
+      photoSection.style.display = "block";
+    })
+    .catch((error) => console.log(error));
+};
+
 
 var displayQuestionAndAnswers = function (questionIndex) {
   let currentQuestion = questions[questionIndex].question;
@@ -56,7 +84,7 @@ var displayQuestionAndAnswers = function (questionIndex) {
 function categoryButtonClicked() {
   categoryChoice = this.value;
   console.log(categoryChoice);
-  console.log('bens right!')
+ 
   main.style.display = "none";
   brainHandEl.style.display = "none";
   questionAnswerEl.style.display = "block";
@@ -162,6 +190,7 @@ var createAnswers = function (questionData) {
     }
     questionIndex++;
     getQuestionCategory(categoryChoice, questionIndex);
+    getPicture(categoryChoice)
   }
 };
 
