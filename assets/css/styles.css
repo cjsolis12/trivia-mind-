@@ -132,7 +132,7 @@ padding-top: 0%;
     margin-right: auto;
     margin-left: auto;
 }
-.try-again {
+.try-again, .submit {
     font-family: 'tr2ntr2n';
 }
 .submit {
@@ -140,6 +140,7 @@ padding-top: 0%;
 }
 .tableDiv {
     padding-top: 20px;
+    display: none;
 }
 
 td {

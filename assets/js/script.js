@@ -1,4 +1,4 @@
-var categoryButtons = document.querySelectorAll(".button");
+var categoryButtons = document.querySelectorAll(".catBut");
 var main = document.querySelector(".main");
 var questionAnswerEl = document.querySelector(".questions-and-answers");
 var brainHandEl = document.querySelector("figure");
@@ -7,6 +7,7 @@ var answerBox = document.querySelector(".answers");
 var progressBar = document.querySelector(".progress");
 var submitBtn = document.querySelector(".submit");
 var tryAgainBtn = document.querySelector(".try-again");
+var tableDiv = document.querySelector(".tableDiv");
 let questionIndex = 0;
 var score = 0;
 var categoryChoice;
@@ -37,15 +38,8 @@ var getQuestionCategory = function (categoryChoice, questionIndex) {
     questionBox.innerHTML = `Quiz has ended! Your Score is ${score}`
     document.querySelector('.progress-bar').style.display = 'none';
     document.querySelector('.saveScore').style.display = 'inline-grid';
-
-    scoreArr = loadTableCookie();
-    try{
-        fillTable(scoreArr);
-    }
-    catch{}
-    
     return;
-  }else{
+  } else {
     displayQuestionAndAnswers(questionIndex);
   }
   startTimer();
@@ -62,7 +56,7 @@ var displayQuestionAndAnswers = function (questionIndex) {
 function categoryButtonClicked() {
   categoryChoice = this.value;
   console.log(categoryChoice);
-
+  console.log('bens right!')
   main.style.display = "none";
   brainHandEl.style.display = "none";
   questionAnswerEl.style.display = "block";
@@ -80,17 +74,25 @@ function tryAgain () {
 }
 
 submitBtn.addEventListener("click", submitInfo);
+
 function submitInfo() {
     const nameInput = document.querySelector(".input").value;
+    var Input = document.querySelector('.input');
+    if (nameInput.length == 0) {
+        Input.placeholder = "Must enter a name to save!";
+        return;
+    }
+ 
     var tableDataNew = {
         name: nameInput,
         score: score
     }
-
-    addScoreToTable(tableDataNew);
+    // addScoreToTable(tableDataNew);
     scoreArr = loadTableCookie();
     scoreArr.push(tableDataNew);
     localStorage.setObj("tableCookie", scoreArr);
+    fillTable(scoreArr);
+    tableDiv.style.display = 'inline-grid';
     submitBtn.disabled = true;
 }
 
@@ -158,15 +160,11 @@ var createAnswers = function (questionData) {
     } else {
       console.log("incorrect");
     }
-  
     questionIndex++;
     getQuestionCategory(categoryChoice, questionIndex);
-    
   }
 };
 
-
-/////////////////////////////////
 const table = document.querySelector(".table");
 
 Storage.prototype.setObj = function(key, obj) {
@@ -180,16 +178,13 @@ Storage.prototype.getObj = function(key) {
 function loadTableCookie() {
     var scoreArr;
 
-    try{
-        scoreArr = localStorage.getObj("tableCookie");
-    }
-    catch{
+    scoreArr = localStorage.getObj("tableCookie");
+
+    if(!scoreArr){
         scoreArr = [];
     }
-
     return scoreArr;
 }
-
 
 function fillTable (data) {
     for (let i = 0; i < data.length; i++) {
@@ -201,14 +196,4 @@ function fillTable (data) {
         nameCell.innerHTML = data[i].name;
         scoreCell.innerHTML = data[i].score;
     };
-};
-
-function addScoreToTable (data) {
-
-    const row = table.insertRow();
-    const nameCell = row.insertCell();
-    const scoreCell = row.insertCell();
-
-    nameCell.innerHTML = data.name;
-    scoreCell.innerHTML = data.score;
 };
