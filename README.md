@@ -17,5 +17,5 @@ Finally, remember to have fun and keep an open MIND!
 ## Technologies-used
 
 Bulma framework: https://bulma.io
-Trivia Api: https://the-trivia-api.com/api
+Trivia Api: https://the-trivia-api.com/api/questions?categories=${categoryChoice}&limit=1
 Images: https://Pexels.com/api
