@@ -8,9 +8,7 @@ p {
     padding-bottom: 20px;
     color: #ff4da6;
     font-family: "Lucida Console", "Courier New", monospace;
-}
-header {
-    
+    font-weight: bolder;
 }
 .title {
     font-family: 'tr2ntr2n';
@@ -80,20 +78,18 @@ padding-top: 0%;
 .questions {
     margin-block: 50px;
     border: solid magenta;
-    background-color: rgb(67, 0, 67);
     color: #c9de60;
     padding: 20px;
     font-size: 18pt;
     font-family: "Lucida Console", "Courier New", monospace;
-    font-weight: 100%
+    font-weight: bold;
 }
 .answers {
     margin-block: 50px;
     width: 100%;
     border: solid magenta;
-    background-color: rgb(67, 0, 67);
+    background-color: rgba(29, 2, 29, 0.643);
     color: #8b0000;
-    padding: 40px;
     font-size: 16pt;
     font-family: "Lucida Console", "Courier New", monospace;
     font-weight: 300%
@@ -111,20 +107,44 @@ padding-top: 0%;
     margin-right: auto;
     margin-left: auto;
   }
-  .progress {
+.btngap {
+      margin: 15px;
+  }
+
+.progress {
     width: 100%;
     height: 100%;
     background-color: #c9de60;
     position: absolute;
     top: 0;
     left: 0;
-    transition: width 6s linear;
+    transition: width 5s linear;
   }
-  
-.btngap {
-    margin: 15px;
-    border: solid 2px black;
-    padding: 50px;
+  .notransition {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -o-transition: none !important;
+    transition: none !important;
+  }
+  .saveScore {
+    display: none;
+    width: 30%;
+    margin-right: auto;
+    margin-left: auto;
+}
+.try-again, .submit {
+    font-family: 'tr2ntr2n';
+}
+.submit {
+    margin-top: 20px;
+}
+.tableDiv {
+    padding-top: 20px;
+    display: none;
 }
 
-
+td {
+    color: #c9de60;
+    font-weight: bolder;
+    background-color: #000000ad;
+}
