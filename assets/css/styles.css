@@ -138,7 +138,12 @@ padding-top: 0%;
 .submit {
     margin-top: 20px;
 }
+.tableDiv {
+    padding-top: 20px;
+}
 
-  
-
-
+td {
+    color: #c9de60;
+    font-weight: bolder;
+    background-color: #000000ad;
+}

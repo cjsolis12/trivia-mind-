@@ -36,6 +36,7 @@
 
     <div class= "questions-and-answers">
       <div class="questions"></div>
+      
       <div class="saveScore">
         <p>Enter your name to save your score:</p>
         <div class="field">
@@ -46,13 +47,30 @@
         </div>
         <p> Or...</p>
         <button class="button is-primary is-outlined is-large is-fullwidth try-again">try again!</button>
+        <div class="container">
+          <div class="tableDiv">
+            <table class="table is-outlined">
+              <thead>
+                <tr>
+                  <th><abbr title="Name">Name</abbr></th>
+                  <th><abbr title="Score">Score</abbr></th>
+                </tr>
+              </thead>
+                  <tbody>
+                      <tr>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+        </div>
       </div>
+
+
 
       <div id="answers" class="answers"></div>  
       <div class="progress-bar">
         <div class="progress"></div>
       </div>
-      
     </div>
     <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
     <script src="assets/js/script.js"></script>

@@ -2725,8 +2725,7 @@ div.icon-text {
 }
 
 .table {
-  background-color: white;
-  color: #363636;
+  /* color: #363636; */
 }
 
 .table td,
@@ -2862,7 +2861,7 @@ div.icon-text {
 .table thead td,
 .table thead th {
   border-width: 0 0 2px;
-  color: #363636;
+  color: #c9de60;
 }
 
 .table tfoot {

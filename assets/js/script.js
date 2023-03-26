@@ -9,7 +9,6 @@ var submitBtn = document.querySelector(".submit");
 var tryAgainBtn = document.querySelector(".try-again");
 let questionIndex = 0;
 var score = 0;
-var nameInput = document.querySelector(".input").value;
 var categoryChoice;
 var questions = [];
 
@@ -37,7 +36,14 @@ var getQuestionCategory = function (categoryChoice, questionIndex) {
     answerBox.style.display = "none";
     questionBox.innerHTML = `Quiz has ended! Your Score is ${score}`
     document.querySelector('.progress-bar').style.display = 'none';
-    document.querySelector('.saveScore').style.display = 'block';
+    document.querySelector('.saveScore').style.display = 'inline-grid';
+
+    scoreArr = loadTableCookie();
+    try{
+        fillTable(scoreArr);
+    }
+    catch{}
+    
     return;
   }else{
     displayQuestionAndAnswers(questionIndex);
@@ -75,13 +81,17 @@ function tryAgain () {
 
 submitBtn.addEventListener("click", submitInfo);
 function submitInfo() {
-    localStorage.setItem("nameInput", nameInput);
-    localStorage.getItem("score", score)
-    // Retrieve the saved user input from local storage
+    const nameInput = document.querySelector(".input").value;
+    var tableDataNew = {
+        name: nameInput,
+        score: score
+    }
 
-const savedUserInput = localStorage.getItem('nameInput');
-// Use the saved user input in your code as needed
-console.log(savedUserInput);
+    addScoreToTable(tableDataNew);
+    scoreArr = loadTableCookie();
+    scoreArr.push(tableDataNew);
+    localStorage.setObj("tableCookie", scoreArr);
+    submitBtn.disabled = true;
 }
 
 let timeInterval;
@@ -152,6 +162,53 @@ var createAnswers = function (questionData) {
     questionIndex++;
     getQuestionCategory(categoryChoice, questionIndex);
     
-    localStorage.setItem("score", score)
   }
+};
+
+
+/////////////////////////////////
+const table = document.querySelector(".table");
+
+Storage.prototype.setObj = function(key, obj) {
+    return this.setItem(key, JSON.stringify(obj))
+}
+
+Storage.prototype.getObj = function(key) {
+    return JSON.parse(this.getItem(key))
+}
+
+function loadTableCookie() {
+    var scoreArr;
+
+    try{
+        scoreArr = localStorage.getObj("tableCookie");
+    }
+    catch{
+        scoreArr = [];
+    }
+
+    return scoreArr;
+}
+
+
+function fillTable (data) {
+    for (let i = 0; i < data.length; i++) {
+
+        const row = table.insertRow();
+        const nameCell = row.insertCell();
+        const scoreCell = row.insertCell();
+
+        nameCell.innerHTML = data[i].name;
+        scoreCell.innerHTML = data[i].score;
+    };
+};
+
+function addScoreToTable (data) {
+
+    const row = table.insertRow();
+    const nameCell = row.insertCell();
+    const scoreCell = row.insertCell();
+
+    nameCell.innerHTML = data.name;
+    scoreCell.innerHTML = data.score;
 };
