@@ -35,11 +35,13 @@ var getQuestionCategory = function (categoryChoice, questionIndex) {
   } else if (questionIndex >= questions.length){
     console.log('quiz has ended')
     answerBox.style.display = "none";
+
     questionBox.innerHTML = `Quiz has ended! Your Score is ${score}`
     document.querySelector('.progress-bar').style.display = 'none';
-    photoSection.style.display = 'none'
 
     document.querySelector('.saveScore').style.display = 'inline-grid';
+    var imgElement= document.getElementById('photo')
+    imgElement.style.display = "none"
     return;
   } else {
     displayQuestionAndAnswers(questionIndex);
