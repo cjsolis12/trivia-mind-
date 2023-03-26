@@ -148,3 +148,6 @@ td {
     font-weight: bolder;
     background-color: #000000ad;
 }
+.photoSection {
+    display: none;
+}

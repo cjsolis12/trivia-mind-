@@ -8,6 +8,7 @@ var progressBar = document.querySelector(".progress");
 var submitBtn = document.querySelector(".submit");
 var tryAgainBtn = document.querySelector(".try-again");
 var tableDiv = document.querySelector(".tableDiv");
+var photoSection = document.querySelector('.photoSection');
 let questionIndex = 0;
 var score = 0;
 var categoryChoice;
@@ -36,6 +37,8 @@ var getQuestionCategory = function (categoryChoice, questionIndex) {
     answerBox.style.display = "none";
     questionBox.innerHTML = `Quiz has ended! Your Score is ${score}`
     document.querySelector('.progress-bar').style.display = 'none';
+    photoSection.style.display = 'none'
+
     document.querySelector('.saveScore').style.display = 'inline-grid';
     return;
   } else {
@@ -62,6 +65,7 @@ var getPicture = function (categoryChoice) {
       console.log(imageUrl)
       var imgElement= document.getElementById('photo')
       imgElement.src = imageUrl
+      photoSection.style.display = "block";
     })
     .catch((error) => console.log(error));
 };
