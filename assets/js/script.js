@@ -188,6 +188,7 @@ var createAnswers = function (questionData) {
     }
     questionIndex++;
     getQuestionCategory(categoryChoice, questionIndex);
+    getPicture(categoryChoice)
   }
 };
 
