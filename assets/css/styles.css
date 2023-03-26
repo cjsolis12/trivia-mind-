@@ -4,16 +4,20 @@ body {
     background-color: rgb(21 3 20);
 }
 p {
-    padding-top: 20px;
+    padding-top: 0px;
+    padding-bottom: 20px;
+    color: #ff4da6;
+    font-family: "Lucida Console", "Courier New", monospace;
+    font-weight: bolder;
 }
 .title {
-        font-family: 'tr2n';
-        src: url('font/tr2n-webfont.woff') format('woff');
-        font-weight: normal;
-        font-style: normal;
-        color: #c9de60;
-        font-size: 100px;
-
+    font-family: 'tr2ntr2n';
+    font-weight: normal;
+    font-style: normal;
+    color: #c9de60;
+    font-size: 100px;
+    padding-top: 40px;
+    padding-bottom: 0%;
 }
 .brainSection {
     padding-bottom: 0%;
@@ -34,6 +38,13 @@ p {
     0% { transform: translateY(0); }
     100% { transform: translateY(-20px); }
 }
+@font-face {
+    font-family: 'tr2ntr2n';
+    src: url('../css/font/tr2n-webfont.woff') format('woff2'),
+    url('../css/font/tr2n-webfont.woff2') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
 .handSection {
 padding-top: 0%;
 }
@@ -45,8 +56,8 @@ padding-top: 0%;
     -moz-animation: glow 2s ease-in-out infinite alternate;
     animation: glow 2s ease-in-out infinite alternate;
   }
-  
-  @-webkit-keyframes glow {
+
+@-webkit-keyframes glow {
     from {
       text-shadow: 
       0 0 20px #fff, 
@@ -67,28 +78,80 @@ padding-top: 0%;
 .questions {
     margin-block: 50px;
     border: solid magenta;
-    background-color: rgb(67, 0, 67);
     color: #c9de60;
     padding: 20px;
     font-size: 18pt;
     font-family: "Lucida Console", "Courier New", monospace;
-    font-weight: 100%
+    font-weight: bold;
 }
 .answers {
     margin-block: 50px;
     width: 100%;
     border: solid magenta;
-    background-color: rgb(67, 0, 67);
+    background-color: rgba(29, 2, 29, 0.643);
     color: #8b0000;
-    padding: 40px;
     font-size: 16pt;
     font-family: "Lucida Console", "Courier New", monospace;
     font-weight: 300%
 }
+.questions-and-answers{
+    display: none;
+}
+.progress-bar {
+    width: 700px;
+    height: 20px;
+    background-color: black;
+    position: relative;
+    border: solid 2px rgb(95, 28, 239);
+    border-radius: 9999px;
+    margin-right: auto;
+    margin-left: auto;
+  }
 .btngap {
-    margin: 15px;
-    border: solid 2px black;
-    padding: 50px;
+      margin: 15px;
+  }
+
+.progress {
+    width: 100%;
+    height: 100%;
+    background-color: #c9de60;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: width 5s linear;
+  }
+  .notransition {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -o-transition: none !important;
+    transition: none !important;
+  }
+  .saveScore {
+    display: none;
+    width: 30%;
+    margin-right: auto;
+    margin-left: auto;
+}
+.try-again, .submit {
+    font-family: 'tr2ntr2n';
+}
+.submit {
+    margin-top: 20px;
+}
+.tableDiv {
+    padding-top: 20px;
+    display: none;
 }
 
+td {
+    color: #c9de60;
+    font-weight: bolder;
+    background-color: #000000ad;
+}
+.photoSection {
+    display: none;
+}
 
+.photoSection > img {
+   height: 250px;
+}
