@@ -12,5 +12,10 @@ Finally, remember to have fun and keep an open MIND!
 
 
 ## Usage
-
 ![Wepage screenshot](/assets/triviaMindScreenshot.png)
+
+## Technologies-used
+
+Bulma framework: https://bulma.io
+Trivia Api: https://the-trivia-api.com/api
+Images: https://Pexels.com/api
