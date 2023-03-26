@@ -8,7 +8,6 @@ var progressBar = document.querySelector(".progress");
 let questionIndex = 0;
 var score = 0;
 var categoryChoice;
-var pictureCategory
 
 
 // API call to trivia categories
@@ -21,8 +20,6 @@ var getQuestionCategory = function (categoryChoice, questionIndex) {
       console.log(responseData);
       let currentQuestion = responseData[questionIndex].question;
       console.log(currentQuestion);
-      var pictureCategory = categoryChoice.split(" ")[0]
-      console.log(pictureCategory)
       questionBox.innerHTML = currentQuestion;
       createAnswers(responseData[questionIndex]);
     })
@@ -30,8 +27,9 @@ var getQuestionCategory = function (categoryChoice, questionIndex) {
 };
 
 // API call to pexel pictures
-var getPicture = function (pictureCategory) {
-  fetch(`https://api.pexels.com/v1/search?query=${pictureCategory}&per_page=1`, {
+var getPicture = function (categoryChoice) {
+    console.log(categoryChoice)
+  fetch(`https://api.pexels.com/v1/search?query=${categoryChoice}&per_page=1`, {
     headers: {
       Authorization: "69GSdMwytrFk7RQ3smY6ZSnjrwiZlKA5b0urYfP9iThhwOPTWywY9Jkf",
     },
@@ -42,6 +40,7 @@ var getPicture = function (pictureCategory) {
     .then((responseData) => {
       console.log(responseData);
       var imageUrl = responseData.photos[0].src.medium
+      console.log(imageUrl)
       var imgElement= document.getElementById('photo')
       imgElement.src = imageUrl
     })
@@ -55,7 +54,7 @@ function categoryButtonClicked() {
   console.log(categoryChoice);
   getQuestionCategory(categoryChoice, questionIndex);
  
-  getPicture(pictureCategory);
+  getPicture(categoryChoice);
 
   main.style.display = "none";
   brainHandEl.style.display = "none";
