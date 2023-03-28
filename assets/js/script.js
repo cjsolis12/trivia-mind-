@@ -28,12 +28,10 @@ var getQuestionCategory = function (categoryChoice, questionIndex) {
         displayQuestionAndAnswers(questionIndex);
       })
       .catch((error) => {
-        console.log(error);
         questionAnswerEl.style.display = "none";
         return;
       });
   } else if (questionIndex >= questions.length){
-    console.log('quiz has ended')
     answerBox.style.display = "none";
 
     questionBox.innerHTML = `Quiz has ended! Your Score is ${score}`
@@ -52,7 +50,6 @@ var getQuestionCategory = function (categoryChoice, questionIndex) {
 // API call to pexel pictures
 var getPicture = function (categoryChoice) {
     searchQuery = categoryChoice.split("_")[0]
-    console.log(searchQuery)
   fetch(`https://api.pexels.com/v1/search?query=${searchQuery}&per_page=1&page=${Math.floor(Math.random() * 10) + 1}`, {
     headers: {
       Authorization: "69GSdMwytrFk7RQ3smY6ZSnjrwiZlKA5b0urYfP9iThhwOPTWywY9Jkf",
@@ -62,9 +59,7 @@ var getPicture = function (categoryChoice) {
       return res.json();
     })
     .then((responseData) => {
-      console.log(responseData);
       var imageUrl = responseData.photos[0].src.medium
-      console.log(imageUrl)
       var imgElement= document.getElementById('photo')
       imgElement.src = imageUrl
       photoSection.style.display = "block";
@@ -75,7 +70,6 @@ var getPicture = function (categoryChoice) {
 
 var displayQuestionAndAnswers = function (questionIndex) {
   let currentQuestion = questions[questionIndex].question;
-  console.log(currentQuestion);
   questionBox.innerHTML = currentQuestion;
   createAnswers(questions[questionIndex]);
 };
@@ -83,8 +77,6 @@ var displayQuestionAndAnswers = function (questionIndex) {
 // getting the value of the button clicked
 function categoryButtonClicked() {
   categoryChoice = this.value;
-  console.log(categoryChoice);
- 
   main.style.display = "none";
   brainHandEl.style.display = "none";
   questionAnswerEl.style.display = "block";
@@ -131,7 +123,6 @@ function startTimer() {
     startProgressBar();
     // 5 second timer
     timeInterval = setInterval(function () {
-      console.log("Time ended.");
      // When timer runs out 
       clearInterval(timeInterval); // Clear the timer after 5s
       questionIndex++;
@@ -177,16 +168,13 @@ var createAnswers = function (questionData) {
   }
 
   function answerClicked(event) {
-    console.log("answer clicked");
     clearInterval(timeInterval);
 
     const selectedAnswer = event.target.innerHTML;
     if (selectedAnswer === questionData.correctAnswer) {
       // function for tracking points
       score++;
-      console.log(`correct! ${score}`);
     } else {
-      console.log("incorrect");
     }
     questionIndex++;
     getQuestionCategory(categoryChoice, questionIndex);
